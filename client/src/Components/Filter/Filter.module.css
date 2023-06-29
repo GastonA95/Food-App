@@ -1,0 +1,58 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: initial;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  color: #999;
+}
+
+.checkbox input[type="checkbox"]:hover + span {
+  color: #999;
+}
+
+.checkbox input[type="checkbox"]:focus + span {
+  outline: 2px solid #333;
+}
+
+.checkbox input[type="checkbox"]:checked + span {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Agregado */
+.filter input[type="checkbox"][value="All Diets"] + span::after {
+  content: "▼";
+  margin-left: 5px;
+}
+
+/* Agregado */
+.filter input[type="checkbox"][value="All Diets"]:checked + span::after {
+  content: "▲";
+}
+
+/* Agregado */
+.filter
+  input[type="checkbox"][value="All Diets"]:checked
+  ~ label:not(:first-child) {
+  display: none;
+}

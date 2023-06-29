@@ -1,0 +1,88 @@
+/* .container {
+  background-image: url("../../Images/wepik-photo-mode-20221025-135956.jpeg");
+  box-sizing: border-box;
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.nav {
+  position: fixed;
+  z-index: 1;
+  background-color: #262626;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1 rem;
+
+  top: 0;
+  gap: 0;
+  align-items: center;
+  text-align: center;
+}
+
+.navContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.cards {
+  padding: 110px;
+  min-height: 100vh;
+}
+
+.paged {
+  margin: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+}
+
+.loader::before {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, #f0c 0%, #80f 100%);
+}
+
+.loader::after {
+  width: 85%;
+  height: 85%;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+body {
+  /* background-image: url("../../Images/HOME.jpg"); */
+
+  background-size: cover;
+}
+
+.cards {
+  max-width: 800px;
+  padding: 80px;
+  margin: 0 auto;
+}

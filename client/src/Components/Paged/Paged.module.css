@@ -1,0 +1,85 @@
+.container {
+  background: #ff4f87;
+  padding: 1rem;
+  margin: 2rem auto;
+  border-radius: 0.2rem;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 32rem;
+}
+
+.pagination a:first-child {
+  margin-right: 10px;
+}
+
+ul,
+li {
+  list-style: none;
+  display: inline;
+  padding-left: 0px;
+}
+
+li:hover a {
+  color: #fdfdfd;
+  background-color: #1d1f20;
+  border: solid 1px #1d1f20;
+}
+li.active a {
+  color: #fdfdfd;
+  background-color: #1d1f20;
+  border: solid 1px #1d1f20;
+}
+
+li:first-child a:after {
+  content: "";
+}
+
+li a {
+  background-color: #fdfdfd;
+  border: solid 1px #d7d7d7;
+  border-radius: 0.2rem;
+  color: #7d7d7d;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 0.9rem;
+}
+
+.pagination li a {
+  display: none;
+}
+.pagination li:first-child a {
+  display: inline-block;
+}
+.pagination li:first-child a:after {
+  content: "<";
+}
+.pagination li:last-child a {
+  display: inline-block;
+}
+.pagination li:last-child a:after {
+  content: ">";
+}
+.pagination li:nth-child(2) a {
+  display: inline-block;
+}
+.pagination li:nth-child(3) a {
+  display: inline-block;
+}
+.pagination li:nth-child(4) a {
+  display: inline-block;
+}
+.pagination li:nth-child(5) a {
+  display: inline-block;
+}
+.pagination li:nth-last-child(2) a {
+  display: inline-block;
+}
+.pagination li:nth-last-child(3) {
+  display: inline-block;
+}
+.pagination li:nth-last-child(3):after {
+  padding: 0 1rem;
+  content: "...";
+}
