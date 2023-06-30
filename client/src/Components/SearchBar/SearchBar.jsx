@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchRecipe } from "../../Redux/Action";
+import { searchRecipe, SEARCH_RECIPE_ERROR } from "../../Redux/Action";
 
 import styles from "./SearchBar.module.css";
 
 export default function SearchBar({ returnToFirstPage }) {
   const [recipe, setRecipe] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
 
   function handleChange(e) {
@@ -15,8 +16,14 @@ export default function SearchBar({ returnToFirstPage }) {
   function handleSubmit(e) {
     e.preventDefault();
     setRecipe("");
-    dispatch(searchRecipe(recipe));
-    returnToFirstPage();
+    dispatch(searchRecipe(recipe)).then((action) => {
+      if (action.type === SEARCH_RECIPE_ERROR) {
+        setError(action.payload);
+      } else {
+        setError("");
+        returnToFirstPage();
+      }
+    });
   }
 
   return (
@@ -35,6 +42,7 @@ export default function SearchBar({ returnToFirstPage }) {
       >
         <span className={styles.button_top}>Search</span>
       </button>
+      {error && <div className={styles.error}>No se encontro la receta</div>}
     </div>
   );
 }

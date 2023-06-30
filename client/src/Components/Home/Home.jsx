@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Lottie from "react-lottie";
+import animationData from "../../Images/lotti-food.json";
 import Cards from "../Cards/Cards";
 import NavBar from "../NavBar/NavBar";
 import Paged from "../Paged/Paged";
@@ -12,11 +14,11 @@ export default function Home() {
   const recipes = useSelector((store) => store.recipes);
 
   const [order, setOrder] = useState("");
-  const [currentPage, setCurrentPage] = useState(1); //Pagina actual (inicia en la 1)
-  const [recipePerPage, setRecipePerPage] = useState(9); //Cantidad de recetas por pagina
-  const indexOfLastRecipe = currentPage * recipePerPage; //'Indice' de la ultima receta
-  const indexOfFirstRecipe = indexOfLastRecipe - recipePerPage; //'Indice' de la primer receta
-  const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe); //Corta las recetas a mostrar por pagina
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipePerPage, setRecipePerPage] = useState(9);
+  const indexOfLastRecipe = currentPage * recipePerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipePerPage;
+  const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   const paged = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -31,6 +33,15 @@ export default function Home() {
     setCurrentPage(1);
   }
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <div className={style.container}>
       <NavBar
@@ -40,19 +51,31 @@ export default function Home() {
         order={order}
         className={style.nav}
       />
-      <div className={style.cards}>
-        <Cards currentRecipes={currentRecipes} className={style.cards} />
-      </div>
-      <div>
-        <Paged
-          recipePerPage={recipePerPage}
-          setRecipePerPage={setRecipePerPage}
-          recipes={recipes.length}
-          paged={paged}
-          currentPage={currentPage}
-          className={style.paged}
-        />
-      </div>
+      {recipes.length === 0 ? (
+        <div className={style.loading}>
+          <Lottie
+            options={{ animationData: animationData, ...defaultOptions }}
+            height={400}
+            width={400}
+          />
+        </div>
+      ) : (
+        <>
+          <div className={style.cards}>
+            <Cards currentRecipes={currentRecipes} className={style.cards} />
+          </div>
+          <div>
+            <Paged
+              recipePerPage={recipePerPage}
+              setRecipePerPage={setRecipePerPage}
+              recipes={recipes.length}
+              paged={paged}
+              currentPage={currentPage}
+              className={style.paged}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

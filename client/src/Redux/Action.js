@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_RECIPES = "GET_RECIPES";
 export const RECIPE_DETAIL = "RECIPE_DETAIL";
 export const SEARCH_RECIPE = "SEARCH_RECIPE";
+export const SEARCH_RECIPE_ERROR = "SEARCH_RECIPE_ERROR";
 export const POST_RECIPE = "POST_RECIPE";
 export const GET_DIETS = "GET_DIETS";
 export const ADD_FAVORITE = "ADD_FAVORITE";
@@ -29,12 +30,26 @@ export function getRecipes() {
 
 export function searchRecipe(name) {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:3001/recipe?name=${name}`);
+    try {
+      let json = await axios.get(`http://localhost:3001/recipe?name=${name}`);
 
-    return dispatch({
-      type: SEARCH_RECIPE,
-      payload: json.data,
-    });
+      if (json.data.length === 0) {
+        return dispatch({
+          type: SEARCH_RECIPE_ERROR,
+          payload: "Recipe not found",
+        });
+      }
+
+      return dispatch({
+        type: SEARCH_RECIPE,
+        payload: json.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: SEARCH_RECIPE_ERROR,
+        payload: error.message,
+      });
+    }
   };
 }
 
