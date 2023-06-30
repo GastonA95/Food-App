@@ -5,6 +5,8 @@ import Landing from "./Components/Landing/Landing";
 import Home from "./Components/Home/Home";
 import CardDetail from "./Components/CardDetail/CardDetail";
 import Create from "./Components/Create/Create";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001/";
 
 function App() {
   return (

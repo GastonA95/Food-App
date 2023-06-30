@@ -16,7 +16,7 @@ export const DELETE_DETAIL = "DELETE_DETAIL";
 export function getRecipes() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/recipe");
+      let json = await axios.get("/recipe");
 
       return dispatch({
         type: GET_RECIPES,
@@ -31,7 +31,7 @@ export function getRecipes() {
 export function searchRecipe(name) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`http://localhost:3001/recipe?name=${name}`);
+      let json = await axios.get(`/recipe?name=${name}`);
 
       if (json.data.length === 0) {
         return dispatch({
@@ -55,7 +55,7 @@ export function searchRecipe(name) {
 
 export function recipeDetail(id) {
   return async function (dispatch) {
-    let info = await axios.get(`http://localhost:3001/recipe/${id}`);
+    let info = await axios.get(`/recipe/${id}`);
     return dispatch({
       type: RECIPE_DETAIL,
       payload: info.data,
@@ -73,14 +73,14 @@ export function deleteDetail() {
 
 export function createRecipe(info) {
   return async function (dispatch) {
-    let json = await axios.post(`http://localhost:3001/recipe/`, info);
+    let json = await axios.post(`/recipe/`, info);
     return dispatch({ type: POST_RECIPE, payload: json.data });
   };
 }
 
 export function getDiet() {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:3001/diet`);
+    let json = await axios.get(`/diet`);
     return dispatch({
       type: GET_DIETS,
       payload: json.data,

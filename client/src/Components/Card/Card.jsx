@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Card.module.css";
 import dietss from "../../Images/diet.png";
+import NotFound from "../../Images/imgNotFound.png";
 import healthScore1 from "../../Images/healthScore.png";
 import servingg from "../../Images/serving.png";
 import clock from "../../Images/clock.png";
@@ -26,7 +27,14 @@ export default function Card({
           <i className="ion ion-md-close"></i>
         </span>
 
-        <img src={image} alt={name} />
+        <img
+          src={image}
+          alt={name}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = NotFound;
+          }}
+        />
       </div>
       <div className={styles.recipeContent}>
         <h2 className={styles.recipeTitle}>{name}</h2>
