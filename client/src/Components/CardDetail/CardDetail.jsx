@@ -142,17 +142,17 @@ export default function CardDetail() {
                   ))}
                 </ul>
               ) : (
-                <p>
+                <>
                   {detail.analyzedInstructions
                     ? detail.analyzedInstructions
                         .replace(/<\/?b>/g, "")
                         .substring(0, 500) +
                       (detail.analyzedInstructions.length > 500 ? "..." : "")
                     : ""}
-                </p>
+                </>
               )
             ) : (
-              <p>No steps</p>
+              <>No steps</>
             )}
           </p>
         </div>
