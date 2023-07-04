@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Lottie from "react-lottie";
-import animationData from "../../Images/lotti-food.json";
 import Cards from "../Cards/Cards";
 import NavBar from "../NavBar/NavBar";
 import Paged from "../Paged/Paged";
@@ -33,15 +31,6 @@ export default function Home() {
     setCurrentPage(1);
   }
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   return (
     <div className={style.container}>
       <NavBar
@@ -53,11 +42,7 @@ export default function Home() {
       />
       {recipes.length === 0 ? (
         <div className={style.loading}>
-          <Lottie
-            options={{ animationData: animationData, ...defaultOptions }}
-            height={400}
-            width={400}
-          />
+          <p>Cargando..</p>
         </div>
       ) : (
         <>
