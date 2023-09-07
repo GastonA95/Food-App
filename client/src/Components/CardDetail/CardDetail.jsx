@@ -15,10 +15,10 @@ export default function CardDetail() {
   const { id } = useParams();
 
   const detail = useSelector((state) => state.details);
-  console.log("DETALLE", detail);
 
-  if (detail.diets && typeof detail.diets[0] === "object") {
-    var diet = detail.diets.map((el) => el.name);
+  var diet = [];
+  if (detail.diets && Array.isArray(detail.diets)) {
+    diet = detail.diets.map((el) => el.name);
   }
 
   useEffect(() => {
